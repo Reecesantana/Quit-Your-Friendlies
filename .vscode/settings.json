@@ -1,0 +1,7 @@
+{
+  "WillLuke.nextjs.addTypesOnSave": true,
+  "WillLuke.nextjs.hasPrompted": true,
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "javascript.format.semicolons": "insert"
+}
