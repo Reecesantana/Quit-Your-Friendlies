@@ -33,6 +33,7 @@ model Account {
     id_token          String? //@db.Text
     session_state     String?
     user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+    Post              Post[]
 
     @@unique([provider, providerAccountId])
 }
@@ -53,6 +54,7 @@ model User {
     image         String?
     accounts      Account[]
     sessions      Session[]
+    Post          Post[]
 }
 
 model VerificationToken {
@@ -61,4 +63,18 @@ model VerificationToken {
     expires    DateTime
 
     @@unique([identifier, token])
+}
+
+model Post {
+    id    String @id @default(cuid())
+    title String
+    body  String
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @default(now())
+
+    user      User     @relation(fields: [userId], references: [id])
+    userId    String
+    Account   Account? @relation(fields: [accountId], references: [id])
+    accountId String?
 }
