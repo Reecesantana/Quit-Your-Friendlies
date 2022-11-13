@@ -66,15 +66,20 @@ model VerificationToken {
 }
 
 model Post {
-    id    String @id @default(cuid())
+    id    String @id @unique @default(cuid())
     title String
     body  String
 
     createdAt DateTime @default(now())
     updatedAt DateTime @default(now())
 
-    user      User     @relation(fields: [userId], references: [id])
-    userId    String
+    user   User   @relation(fields: [userId], references: [id])
+    userId String
+
     Account   Account? @relation(fields: [accountId], references: [id])
     accountId String?
+}
+
+model Tag {
+    id String @id @unique
 }

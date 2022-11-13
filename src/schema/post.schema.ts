@@ -1,12 +1,12 @@
-import z from "zod";
+import z from 'zod'
 
 export const createPostSchema = z.object({
-  title: z.string().max(256, "Max title length is 356"),
-  body: z.string().min(10),
-});
+	title: z.string().max(256, 'Max title length is 356'),
+	body: z.string().min(10),
+})
 
-export type CreatePostInput = z.TypeOf<typeof createPostSchema>;
+export type CreatePostInput = z.TypeOf<typeof createPostSchema>
 
 export const getSinglePostSchema = z.object({
-  postId: z.string().uuid(),
-});
+	postId: z.string().uuid(),
+})
